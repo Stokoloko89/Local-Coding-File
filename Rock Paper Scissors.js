@@ -10,7 +10,7 @@ returning the expected output before moving to the next step! */
  // #1 create a array of rock, paper, scissors and assign it to a the variable result.
 let result = ['Rock', 'Paper', 'Scissors']; 
 // #2 create a vari that generates a random number based on the range of the array length and assign it to a new variable. Then return the variable. 
-function showResult (){
+function getResult (){
     let indexValue = Math.floor(Math.random() * 3);
     return result[indexValue]
 }   
@@ -26,22 +26,22 @@ Make your function’s playerSelection parameter case-insensitive
 // The condition is as follows : Paper beats Rock, Rock beats Scissors, Scissors beats Paper. 
 // The playerSelection parameter must be case insensitive.
 
-function showWinner(playerSelection, computerSelection){
-    if (playerSelection === 'Paper' && computerSelection === 'Rock'){
+function showWinner(playerSelection, computerSelection) {
+    if (playerSelection === 'Paper' && computerSelection === 'Rock') {
         return ('You win! Paper beats Rock'); 
-            } else if 
-            (playerSelection === 'Rock' && computerSelection === 'Scissors'){
-            return ('You win! Rock beats Scissors'); 
-            } else if
-            (playerSelection === 'Scissors' && computerSelection === 'Paper'){
-             return ('You win! Scissors beats Paper');
-            } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
-            return ('You lose! Paper beats Rock');
-            } else if (playerSelection === 'Paper' && computerSelection === 'Scissors'){
-                return ('You lose! Scissors beats Paper');
-            } else if (playerSelection === 'Rock' && computerSelection === 'Paper'){
-                 return ('You lose! Paper beats Rock');
-        } else 
-        ('Please enter a valid selection');
-}
-
+    }
+//             } else if 
+//             (playerSelection === 'Rock' && computerSelection === 'Scissors'){
+//             return ('You win! Rock beats Scissors'); 
+//             } else if
+//             (playerSelection === 'Scissors' && computerSelection === 'Paper'){
+//              return ('You win! Scissors beats Paper');
+//             } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
+//             return ('You lose! Paper beats Rock');
+//             } else if (playerSelection === 'Paper' && computerSelection === 'Scissors'){
+//                 return ('You lose! Scissors beats Paper');
+//             } else if (playerSelection === 'Rock' && computerSelection === 'Paper'){
+//                  return ('You lose! Paper beats Rock');
+//         }   else 
+//             ('Please enter a valid selection');
+//     }
