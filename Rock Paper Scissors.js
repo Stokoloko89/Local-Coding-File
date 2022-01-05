@@ -1,6 +1,10 @@
 let result = ['Rock', 'Paper', 'Scissors']; 
 let playerScore = 0;
 let computerScore = 0;
+let winningScore = 5;
+let playerAnswer = prompt('Rock, Paper, or Scissors?');  
+
+
 
 // Variable that generates a random number based on the range of the array length and assign it to a new variable. Then return the variable. 
 function computerPlay() {
@@ -8,28 +12,34 @@ function computerPlay() {
     return result[indexValue];
 }  
 
-let computerSelection = computerPlay();
+let getPlayerAnswer = playerAnswer; 
 
-// This function evaluates the two inputs - from the player and from the computer. It returns the winning hand. based on the rules of Rock, Paper, Scissors. 
-function showWinner(playerSelection, computerSelection) {
-    let firstChar = playerSelection[0].toUpperCase();         
-    let remaining = playerSelection.toLowerCase().slice(1);
-    playerSelection = firstChar.concat(remaining);
+    function showWinner(getPlayerAnswer, computerSelection) {
+    let firstChar = getPlayerAnswer[0].toUpperCase();         
+    let remaining = getPlayerAnswer.toLowerCase().slice(1);
+    getPlayerAnswer = firstChar.concat(remaining);
+    // if getPlayerAnswer is equal to 5 or computerSelection is equal to 5 then declare the winner of the game.
+    if (playerScore === 5) {
+        return ('Congratulations, player Wins the game!');
+    }   else if (computerScore === 5) {
+        return ('Oh no, Computer Wins the game!')
+    }
         if 
-        (playerSelection === computerSelection) {
+        (getPlayerAnswer === computerSelection) {
         return ('Its a tie!')
         }
         if  (
-        (playerSelection == 'Paper' && computerSelection == 'Rock') || 
-        (playerSelection == 'Rock' && computerSelection == 'Scissors') ||
-        (playerSelection == 'Scissors' && computerSelection == 'Paper')
-        ) {
+        (getPlayerAnswer == 'Paper' && computerSelection == 'Rock') || 
+        (getPlayerAnswer == 'Rock' && computerSelection == 'Scissors') ||
+        (getPlayerAnswer == 'Scissors' && computerSelection == 'Paper')
+        ) { playerScore++;
         return ('Player Wins!')
     }   else if (
-        (computerSelection == 'Rock' && playerSelection == 'Scissors') ||
-        (computerSelection == 'Paper' && playerSelection == 'Rock') ||
-        (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
-            return ('Computer Wins!')
-        
+        (computerSelection == 'Rock' && getPlayerAnswer == 'Scissors') ||
+        (computerSelection == 'Paper' && getPlayerAnswer == 'Rock') ||
+        (computerSelection == 'Scissors' && getPlayerAnswer == 'Paper')) 
+          { computerScore++;
+        return ('Computer Wins!')
         }
-}
+}   
+let computerSelection = computerPlay();
