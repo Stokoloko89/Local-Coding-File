@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
 </head>
-<body>
 
-    <h1>Rock Paper Scissors</h1>
-    <script src="Rock Paper Scissors.js"></script>
+<body>
+    <main>
+        <h1>Rock Paper Scissors</h1>
+
+        <p class="game-description">One of the most pointless and nonsensical game used to make small decisions.
+            Here are the rules <br> Scissors can beat Paper (makes sense) <br> Rock can beat Scissors (ofcourse) <br>
+            Paper
+            can beat Rock (yeah that's right)
+            <br>
+            it's an enjoyable game to play when you have nothing to do. Enjoy!
+        </p>
+
+        <!-- buttons -->
+        <div class="btn-container">
+            <button id="rock" class="btn">Rock</button>
+            <button id="paper" class="btn">Paper</button>
+            <button id="scissors" class="btn">Scissors</button>
+        </div>
+        <!-- end of buttons -->
+
+        <h2>Scoreboard</h2>
+        <!-- round result text -->
+        <p class="round-result">Round Result</p>
+        <!-- scores -->
+        <div class="score-keeper">
+            <div class="playerscore-container">
+                <h3 class="player-title">Player</h3>
+                <span id="player-score">0</span>
+            </div>
+            <div class="computerscore-container">
+                <h3 class="computer-title">Computer</h3>
+                <span id="computer-score">0</span>
+            </div>
+        </div>
+
+
+        <div id="final-winner"></div>
+
+        <script src="Rock Paper Scissors.js"></script>
+    </main>
 </body>
+
 </html>

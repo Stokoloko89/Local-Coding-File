@@ -1,45 +1,64 @@
-let result = ['Rock', 'Paper', 'Scissors']; 
-let playerScore = 0;
+const result = ['Rock', 'Paper', 'Scissors'];
+// access the buttons
+let buttons = document.querySelectorAll('.btn')
+// access the scores of each player
+let roundResult = document.querySelector('.round-result'); 
+let playerScoreDisplay = document.querySelector('#player-score'); 
+let computerScoreDisplay = document.querySelector('#computer-score');
+let playerSelection = '';
+let computerSelection = '';
+let playerScore = 0; 
 let computerScore = 0;
-let winningScore = 5;
-let playerAnswer = prompt('Rock, Paper, or Scissors?');  
+let isGameOver = false;
+let winningScore = 5
 
-
-
-// Variable that generates a random number based on the range of the array length and assign it to a new variable. Then return the variable. 
-function computerPlay() {
-    let indexValue = Math.floor(Math.random() * 3);
+// Variable that generates a computer's selection based on the range of the array length. 
+function randomSelection() {
+    let indexValue = Math.floor(Math.random() * result.length);
     return result[indexValue];
-}  
+}
 
-let getPlayerAnswer = playerAnswer; 
+// evaluates player selection vs computer selection to declare a round winner
+function playRound(playerSelection, computerSelection) {
+    let firstChar = playerSelection[0].toUpperCase();
+    let remaining = playerSelection.toLowerCase().slice(1);
+    computerSelection = randomSelection()
+    playerSelection = firstChar.concat(remaining);
 
-    function showWinner(getPlayerAnswer, computerSelection) {
-    let firstChar = getPlayerAnswer[0].toUpperCase();         
-    let remaining = getPlayerAnswer.toLowerCase().slice(1);
-    getPlayerAnswer = firstChar.concat(remaining);
-    // if getPlayerAnswer is equal to 5 or computerSelection is equal to 5 then declare the winner of the game.
-    if (playerScore === 5) {
-        return ('Congratulations, player Wins the game!');
-    }   else if (computerScore === 5) {
-        return ('Oh no, Computer Wins the game!')
+    if (playerSelection === computerSelection) {
+        roundResult.innerText = 'Its a tie '; 
     }
-        if 
-        (getPlayerAnswer === computerSelection) {
-        return ('Its a tie!')
-        }
-        if  (
-        (getPlayerAnswer == 'Paper' && computerSelection == 'Rock') || 
-        (getPlayerAnswer == 'Rock' && computerSelection == 'Scissors') ||
-        (getPlayerAnswer == 'Scissors' && computerSelection == 'Paper')
-        ) { playerScore++;
-        return ('Player Wins!')
-    }   else if (
-        (computerSelection == 'Rock' && getPlayerAnswer == 'Scissors') ||
-        (computerSelection == 'Paper' && getPlayerAnswer == 'Rock') ||
-        (computerSelection == 'Scissors' && getPlayerAnswer == 'Paper')) 
-          { computerScore++;
-        return ('Computer Wins!')
-        }
-}   
-let computerSelection = computerPlay();
+    if (
+        (playerSelection == 'Paper' && computerSelection == 'Rock') ||
+        (playerSelection == 'Rock' && computerSelection == 'Scissors') ||
+        (playerSelection == 'Scissors' && computerSelection == 'Paper')) {
+        playerScore++;
+        playerScoreDisplay.textContent = playerScore;
+        roundResult.innerText = 'Player wins!'; 
+    
+    } if (
+        (computerSelection == 'Rock' && playerSelection == 'Scissors') ||
+        (computerSelection == 'Paper' && playerSelection == 'Rock') ||
+        (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
+        computerScore++;
+        computerScoreDisplay.textContent = computerScore; 
+        roundResult.innerText = 'Computer Wins!'; 
+    }
+};  
+
+buttons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        playerSelection = button.id;
+        playRound(playerSelection, computerSelection);
+
+            if(playerScore === winningScore) {
+                isGameOver = true;
+               return roundResult.innerText = 'Congratulations, You WIN!!!';
+            }
+            if(computerScore === winningScore) {
+                isGameOver = true;
+                return roundResult.innerText = 'Oh no!!! Computer Wins!!';
+            }
+    });
+});
+
